@@ -1,0 +1,11 @@
+# index file can be index.php, home.php, default.php etc.
+DirectoryIndex index.php
+
+# Rewrite engine
+RewriteEngine On
+RewriteBase /wifi/
+# condition with escaping special chars
+RewriteCond $1 !^(index\.php|robots\.txt|js|dist|bower_components|favicon\.ico)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ./index.php/$1 [L,QSA]
